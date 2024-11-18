@@ -97,6 +97,8 @@ export default defineNuxtConfig({
     '/': { prerender: true },
   },
 
+  ssr: false,
+
   modules: [
     '@primevue/nuxt-module',
     '@vueuse/nuxt',
