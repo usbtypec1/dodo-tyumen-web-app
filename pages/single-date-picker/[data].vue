@@ -23,18 +23,18 @@ import {
   useWebAppHapticFeedback,
 } from 'vue-tg'
 
+const route = useRoute()
+
 const { sendData } = useWebApp()
 const { showConfirm } = useWebAppPopup()
 const { notificationOccurred } = useWebAppHapticFeedback()
-
-const route = useRoute()
 
 const date = ref<Date>(new Date())
 const formattedDate = useDateFormat(date, 'YYYY-MM-DD')
 
 const serializedData = computed((): string => JSON.stringify({
   date: formattedDate.value,
-  extraData: route.query?.extraData,
+  extraData: route.params.data,
 }))
 
 const onSubmit = () => {
