@@ -27,11 +27,14 @@ const { sendData } = useWebApp()
 const { showConfirm } = useWebAppPopup()
 const { notificationOccurred } = useWebAppHapticFeedback()
 
+const route = useRoute()
+
 const date = ref<Date>(new Date())
 const formattedDate = useDateFormat(date, 'YYYY-MM-DD')
 
 const serializedData = computed((): string => JSON.stringify({
   date: formattedDate.value,
+  extraData: route.query?.extraData,
 }))
 
 const onSubmit = () => {
